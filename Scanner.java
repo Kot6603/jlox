@@ -101,6 +101,22 @@ class Scanner {
           while ((peek() != '\n') && !isAtEnd()) {
             advance();
           }
+        } else if (match('*')) {
+          // a block comment goes until the end of the block
+          while ((peek() != '*' && peekNext() != '/') && !isAtEnd()) {
+            if (peek() == '\n') {
+              line++;
+            }
+            advance();
+          }
+
+          // consume the closing */
+          if (!isAtEnd()) {
+            advance();
+          }
+          if (!isAtEnd()) {
+            advance();
+          }
         } else {
           addToken(SLASH);
         }
