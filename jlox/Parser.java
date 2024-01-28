@@ -168,8 +168,8 @@ class Parser {
 
       switch (peek().type) {
         case CLASS:
-        case FUN:
-        case VAR:
+        case FN:
+        case LET:
         case FOR:
         case IF:
         case WHILE:
